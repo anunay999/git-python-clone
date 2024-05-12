@@ -40,6 +40,10 @@ def write_tree(root = ".") -> str:
 
     return hash_blob(content, 'tree')
 
+def commit_tree(tree_sha, parent_sha, message):
+    content = f"tree {tree_sha}\n parent {parent_sha}\nauthor Anunay <anunay@gmail.com>\ncommiter anunay <anunay@gmail.com>\n\n{message}\n".encode()
+    return hash_blob(content, 'commit')
+
 
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -82,6 +86,9 @@ def main():
 
     elif command == 'write-tree':
         print(write_tree())
+    elif command == 'commit-tree':
+        tree_sha, parent_sha, message = sys.argv[2], sys.argv[4], sys.argv[6]
+        print(commit_tree(tree_sha, parent_sha, message)) 
     else:
         raise RuntimeError(f"Unknown command #{command}")
     
