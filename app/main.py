@@ -17,7 +17,7 @@ def main():
     elif command == "cat-file":
         param, hash = sys.argv[2], sys.argv[3]
         if param == '-p':
-            with open(".git/objects/{hash[:2]}/{hash[2:]}", "rb") as f:
+            with open(f".git/objects/{hash[:2]}/{hash[2:]}", "rb") as f:
                 compressed = f.read()
                 content = zlib.decompress(compressed).split(b'\0')[1].decode('utf-8')
                 print(content, end="")
