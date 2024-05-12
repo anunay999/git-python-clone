@@ -18,7 +18,7 @@ def main():
     #     print("Initialized git directory")
     # else:
     #     raise RuntimeError(f"Unknown command #{command}")
-    command = sys.argc[1]
+    command = sys.argv[1]
     if command == "init":
         os.mkdir(".git")
         os.mkdir(".git/objects")
