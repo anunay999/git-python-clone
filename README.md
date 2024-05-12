@@ -23,32 +23,32 @@ Navigate to the directory where you want to use this script and execute the desi
 
 - **init**
   - Initializes a new repository.
-  - Example: `python git_clone.py init`
+  - Example: `git.sh init`
   
 - **cat-file**
   - Prints the contents of an object based on its hash.
   - Parameters:
     - `-p`: Specifies that the content should be printed.
     - `hash`: The hash of the object to retrieve.
-  - Example: `python git_clone.py cat-file -p 1a2b3c4d`
+  - Example: `git.sh  cat-file -p 1a2b3c4d`
 
 - **hash-object**
   - Hashes a file and optionally writes it to the object storage.
   - Parameters:
     - `-w`: Indicates the blob should be written to the object storage.
     - `file`: The path to the file to hash.
-  - Example: `python git_clone.py hash-object -w example.txt`
+  - Example: `git.sh  hash-object -w example.txt`
 
 - **ls-tree**
   - Lists the contents of a directory tree based on its hash.
   - Parameters:
     - `--name-only`: List only the names of the contents.
     - `hash`: The hash of the tree to list.
-  - Example: `python git_clone.py ls-tree --name-only 1a2b3c4d`
+  - Example: `git.sh ls-tree --name-only 1a2b3c4d`
 
 - **write-tree**
   - Writes a tree object from the contents of the current directory.
-  - Example: `python git_clone.py write-tree`
+  - Example: `git.sh write-tree`
 
 - **commit-tree**
   - Creates a commit object.
@@ -56,7 +56,7 @@ Navigate to the directory where you want to use this script and execute the desi
     - `tree_sha`: The SHA-1 hash of the tree you are committing.
     - `parent_sha`: The SHA-1 hash of the parent commit.
     - `message`: The commit message.
-  - Example: `python git_clone.py commit-tree 1a2b3c4d -p 2b3c4d5e -m "Initial commit"`
+  - Example: `git.sh commit-tree 1a2b3c4d -p 2b3c4d5e -m "Initial commit"`
 
 ### Development
 
