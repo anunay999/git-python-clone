@@ -1,7 +1,7 @@
 import sys
 import os
 import zlib
-
+import hashlib
 
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -26,8 +26,13 @@ def main():
         if param == '-w':
             with open(f"{file}", "rb") as f:
                 content = f.read()
-                compressed = zlib.compress(content)
-                print(compressed, end="")
+                header = f'blob {len(content)}\0'.encode()
+                content = header + content
+                hash = hashlib.sha1(content).hexdigest()
+                os.makedirs(f".git/objects/{hash[:2]}",exist_ok=True)
+                with open(f".git/objects/{hash[:2]}/{hash[2:]}", "wb") as wb:
+                    wb.write(zlib.compress(content))
+                print(hash)
 
     else:
         raise RuntimeError(f"Unknown command #{command}")
