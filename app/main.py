@@ -21,6 +21,13 @@ def main():
                 compressed = f.read()
                 content = zlib.decompress(compressed).split(b'\0')[1].decode('utf-8')
                 print(content, end="")
+    elif command == "hash-object":
+        param, file = sys.argv[2], sys.argv[3]
+        if param == '-w':
+            with open(f"file", "rb") as f:
+                content = f.read()
+                compressed = zlib.compress(content)
+                print(compressed, end="")
 
     else:
         raise RuntimeError(f"Unknown command #{command}")
