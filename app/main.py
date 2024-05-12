@@ -24,7 +24,7 @@ def main():
         os.mkdir(".git/objects")
         os.mkdir(".git/refs")
         with open(".git/HEAD", "w") as f:
-            f.write("ref: refs/head/main\n")
+            f.write("ref: refs/heads/main\n")
         print("Intialized git directory")
     else:
         raise RuntimeError(f"Unknown command #{command}")
