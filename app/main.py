@@ -24,7 +24,7 @@ def main():
     elif command == "hash-object":
         param, file = sys.argv[2], sys.argv[3]
         if param == '-w':
-            with open(f"file", "rb") as f:
+            with open(f"{file}", "rb") as f:
                 content = f.read()
                 compressed = zlib.compress(content)
                 print(compressed, end="")
