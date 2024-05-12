@@ -26,7 +26,7 @@ def main():
         if param == '-w':
             with open(f"{file}", "rb") as f:
                 content = f.read()
-                header = f'blob {len(content)}\0
+                header = f'blob {len(content)}\0'
                 content = header + content
                 hash = hashlib.sha1(content).hexdigest()
                 os.makedirs(f".git/objects/{hash[:2]}",exist_ok=True)
